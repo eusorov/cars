@@ -28,9 +28,9 @@ public class Backtest {
 	String currency;
 	long datefrom;
 	long dateto;
-	//Double profit;?
 	String config;
 	String backtest;
+	String performance;
 	
 
 	Backtest() {
@@ -40,15 +40,16 @@ public class Backtest {
 		this.currency = "";
 		this.datefrom = 0;
 		this.dateto = 0;
-		//this.profit = 0d;
 		this.config = "";
 		this.method = "";
+		this.performance = "";
 
 	}
 	
-	public JsonNode backtestJson() throws JsonMappingException, JsonProcessingException {
+	
+	public JsonNode toJson(String obj) throws JsonMappingException, JsonProcessingException {
 		ObjectMapper objectMapper = new ObjectMapper();
-		JsonNode jsonNode = objectMapper.readTree(this.backtest);
+		JsonNode jsonNode = objectMapper.readTree(obj);
 		return jsonNode;
 	}
 }

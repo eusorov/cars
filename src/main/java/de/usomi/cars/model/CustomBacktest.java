@@ -15,9 +15,13 @@ public interface CustomBacktest {
 	String getMethod();
 	String getAsset();
 	String getCurrency();
-	String getConfig();
-//	@Value("#{target.backtestJson()}")
-//	JsonNode getBacktest();
+	
+	@Value("#{target.toJson(target.config)}")
+	Object getConfig();
+	
+	@Value("#{target.toJson(target.performance)}")
+	Object getPerformance();
+	
 	long getDatefrom();
 	long getDateto();
 	
